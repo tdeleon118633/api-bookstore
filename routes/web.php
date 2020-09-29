@@ -24,7 +24,7 @@ $router->get('user', function () use ($router) {
 //Recibe parametro
 $router->get('user/{id}', function ($id) {
     return 'User '.$id;
-});
+}); 
 
 $router->post('user123', function () {
     return 'Primer prueba de json';
