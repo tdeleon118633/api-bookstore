@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-user App\User;
+use App\User;
+
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -83,16 +85,19 @@ class UserController extends Controller
         //
     }
 
-    public function registrer(Request $request)
+    public function register(Request $request)
     {
-        $hasher = app()->make('hash');
-        $username = $request->input('username');
+        //$hasher = app()->make('hash');
+        $hashar = app()->make('hash');
+        $username = $request->input('name');
         $email = $request->input('email');
-        $password = $request->make($request->input('password'));
+        $type = $request->input('type');
+        $password = $hashar->make($request->input('password'));
 
         $register = User::create([
-          'username' => $username,
+          'name' => $username,
           'email' => $email,
+          'type' => $type,
           'password' => $password,
         ]);
 
@@ -100,6 +105,11 @@ class UserController extends Controller
             $res['success'] = true;
             $res['result'] = 'success register';
             return response($res);
+        }
+        else{
+          $res['success'] = false;
+          $res['message'] = 'Error al registrarse';
+          return response($res);
         }
     }
 }

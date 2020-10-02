@@ -33,8 +33,8 @@ class LoginController extends Controller
             if( $create_token ){
               $res['success'] = false;
               $res['api_token'] = $api_token;
-                $res['message'] = $login;
-                return response($res);
+              $res['message'] = $login;
+              return response($res);
             }
             else{
               $res['success'] = false;
