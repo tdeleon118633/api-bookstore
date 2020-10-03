@@ -37,4 +37,12 @@ $router->get('home', function () {
 
 $router->post('/login','LoginController@index');
 $router->post('/register','UserController@register');
-$router->post('/user/{id}',['middleware' => 'auth', 'user' => 'UserController@getUser']);
+//$router->post('/user/{id}',['middleware' => 'auth', 'user' => 'UserController@getUser']);
+
+
+//$router->post('/author','AuthorController@index');
+//MUESTRA LOS AUTORES
+$router->post('/authors','AuthorController@showAllAuthors');
+//$router->get('authors',  ['uses' => 'AuthorController@showAllAuthors']);
+//$router->post('/register','UserController@register');
+//$router->post('/user/{id}',['middleware' => 'auth', 'user' => 'UserController@getUser']);
