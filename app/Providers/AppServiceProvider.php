@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,5 +17,10 @@ class AppServiceProvider extends ServiceProvider
       if ($this->app->environment() == 'local') {
         $this->app->register('Wn\Generators\CommandsServiceProvider');
       }
+    }
+
+    public function boot()
+    {
+      Schema::defaultStringLength(191);
     }
 }
